@@ -21,10 +21,10 @@ public class OpListener implements Listener {
 
                 if (target != null) {
                     if (!target.isOp()) {
-                        sendOpMessage(server, true, target.getName());
+                        sendOpMessage(server, true, player.getName(), target.getName());
                     }
                 } else {
-                    sendOpMessage(server, true, event.getMessage().split(" ")[1]);
+                    sendOpMessage(server, true, player.getName(), event.getMessage().split(" ")[1]);
                 }
             }
         } else if (event.getMessage().substring(0, 6).equals("/deop ") && player.isOp()) {
@@ -33,10 +33,10 @@ public class OpListener implements Listener {
 
                 if (target != null) {
                     if (target.isOp()) {
-                        sendOpMessage(server, false, target.getName());
+                        sendOpMessage(server, false, player.getName(), target.getName());
                     }
                 } else {
-                    sendOpMessage(server, false, event.getMessage().split(" ")[1]);
+                    sendOpMessage(server, false, player.getName(), event.getMessage().split(" ")[1]);
                 }
             }
         }
@@ -52,10 +52,10 @@ public class OpListener implements Listener {
 
                 if (target != null) {
                     if (!target.isOp()) {
-                        sendOpMessage(server, true, target.getName());
+                        sendOpMessage(server, true, "CONSOLE", target.getName());
                     }
                 } else {
-                    sendOpMessage(server, true, event.getCommand().split(" ")[1]);
+                    sendOpMessage(server, true, "CONSOLE", event.getCommand().split(" ")[1]);
                 }
             }
         } else if (event.getCommand().substring(0, 5).equals("deop ")) {
@@ -64,17 +64,18 @@ public class OpListener implements Listener {
 
                 if (target != null) {
                     if (target.isOp()) {
-                        sendOpMessage(server, false, target.getName());
+                        sendOpMessage(server, false, "CONSOLE", target.getName());
                     }
                 } else {
-                    sendOpMessage(server, false, event.getCommand().split(" ")[1]);
+                    sendOpMessage(server, false, "CONSOLE", event.getCommand().split(" ")[1]);
                 }
             }
         }
     }
 
-    private void sendOpMessage(Server server, boolean opEnabled, String playerName) {
-        String opMessage = ChatColor.DARK_RED + "[OpList]" + ChatColor.WHITE + ": Player " + ChatColor.GREEN + playerName + ChatColor.WHITE+  " has set OP to: " + (opEnabled ? ChatColor.GREEN + "Enabled" : ChatColor.DARK_RED + "Disabled") + ChatColor.WHITE + "!";
+    private void sendOpMessage(Server server, boolean opEnabled, String initiator, String playerName) {
+        String opMessage = ChatColor.DARK_RED + "[OpList]" + ChatColor.WHITE + (initiator.equals("CONSOLE") ? ": " : ": Player ") + ChatColor.GOLD + initiator + ChatColor.WHITE+  " has set OP for Player " +
+                ChatColor.GOLD + playerName + ChatColor.WHITE + " to: " + (opEnabled ? ChatColor.GREEN + "Enabled" : ChatColor.RED + "Disabled") + ChatColor.WHITE + "!";
         server.broadcastMessage(opMessage);
     }
 }
