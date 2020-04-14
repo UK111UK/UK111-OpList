@@ -15,7 +15,7 @@ public class OpListener implements Listener {
         Player player = event.getPlayer();
         Server server = OpList.getPlugin(OpList.class).getServer();
 
-        if (event.getMessage().substring(0, 4).equals("/op ") && player.isOp()) {
+        if (event.getMessage().length() >= 4 && event.getMessage().substring(0, 4).equals("/op ") && player.isOp()) {
             if (event.getMessage().split(" ").length > 0) {
                 Player target = server.getPlayerExact(event.getMessage().split(" ")[1]);
 
@@ -27,7 +27,7 @@ public class OpListener implements Listener {
                     sendOpMessage(server, true, player.getName(), event.getMessage().split(" ")[1]);
                 }
             }
-        } else if (event.getMessage().substring(0, 6).equals("/deop ") && player.isOp()) {
+        } else if (event.getMessage().length() >= 6 && event.getMessage().substring(0, 6).equals("/deop ") && player.isOp()) {
             if (event.getMessage().split(" ").length > 0) {
                 Player target = server.getPlayerExact(event.getMessage().split(" ")[1]);
 
@@ -58,7 +58,7 @@ public class OpListener implements Listener {
                     sendOpMessage(server, true, "CONSOLE", event.getCommand().split(" ")[1]);
                 }
             }
-        } else if (event.getCommand().length() >= 6 && event.getCommand().substring(0, 5).equals("deop ")) {
+        } else if (event.getCommand().length() >= 5 && event.getCommand().substring(0, 5).equals("deop ")) {
             if (event.getCommand().split(" ").length > 0) {
                 Player target = server.getPlayerExact(event.getCommand().split(" ")[1]);
 
