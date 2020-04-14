@@ -45,30 +45,29 @@ public class OpListener implements Listener {
     @EventHandler
     public void onServerCommand(ServerCommandEvent event) {
         Server server = OpList.getPlugin(OpList.class).getServer();
-        if (event.getCommand().length() > 2) {
-            if (event.getCommand().substring(0, 3).equals("op ")) {
-                if (event.getCommand().split(" ").length > 0) {
-                    Player target = server.getPlayerExact(event.getCommand().split(" ")[1]);
 
-                    if (target != null) {
-                        if (!target.isOp()) {
-                            sendOpMessage(server, true, "CONSOLE", target.getName());
-                        }
-                    } else {
-                        sendOpMessage(server, true, "CONSOLE", event.getCommand().split(" ")[1]);
+        if (event.getCommand().length() >= 3 && event.getCommand().substring(0, 3).equals("op ")) {
+            if (event.getCommand().split(" ").length > 0) {
+                Player target = server.getPlayerExact(event.getCommand().split(" ")[1]);
+
+                if (target != null) {
+                    if (!target.isOp()) {
+                        sendOpMessage(server, true, "CONSOLE", target.getName());
                     }
+                } else {
+                    sendOpMessage(server, true, "CONSOLE", event.getCommand().split(" ")[1]);
                 }
-            } else if (event.getCommand().substring(0, 5).equals("deop ")) {
-                if (event.getCommand().split(" ").length > 0) {
-                    Player target = server.getPlayerExact(event.getCommand().split(" ")[1]);
+            }
+        } else if (event.getCommand().length() >= 6 && event.getCommand().substring(0, 5).equals("deop ")) {
+            if (event.getCommand().split(" ").length > 0) {
+                Player target = server.getPlayerExact(event.getCommand().split(" ")[1]);
 
-                    if (target != null) {
-                        if (target.isOp()) {
-                            sendOpMessage(server, false, "CONSOLE", target.getName());
-                        }
-                    } else {
-                        sendOpMessage(server, false, "CONSOLE", event.getCommand().split(" ")[1]);
+                if (target != null) {
+                    if (target.isOp()) {
+                        sendOpMessage(server, false, "CONSOLE", target.getName());
                     }
+                } else {
+                    sendOpMessage(server, false, "CONSOLE", event.getCommand().split(" ")[1]);
                 }
             }
         }
