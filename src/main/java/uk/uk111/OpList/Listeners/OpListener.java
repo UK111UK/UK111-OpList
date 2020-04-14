@@ -18,8 +18,10 @@ public class OpListener implements Listener {
             if (event.getMessage().split(" ").length > 0) {
                 Player target = server.getPlayerExact(event.getMessage().split(" ")[1]);
 
-                if (target != null && !target.isOp()) {
-                    sendOpMessage(server, true, target.getName());
+                if (target != null) {
+                    if (!target.isOp()) {
+                        sendOpMessage(server, true, target.getName());
+                    }
                 } else {
                     sendOpMessage(server, true, event.getMessage().split(" ")[1]);
                 }
@@ -28,8 +30,10 @@ public class OpListener implements Listener {
             if (event.getMessage().split(" ").length > 0) {
                 Player target = server.getPlayerExact(event.getMessage().split(" ")[1]);
 
-                if (target != null && target.isOp()) {
-                    sendOpMessage(server, false, target.getName());
+                if (target != null) {
+                    if (target.isOp()) {
+                        sendOpMessage(server, false, target.getName());
+                    }
                 } else {
                     sendOpMessage(server, false, event.getMessage().split(" ")[1]);
                 }
