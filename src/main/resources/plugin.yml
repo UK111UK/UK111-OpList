@@ -1,0 +1,9 @@
+name: UK111-OpList
+version: 1
+author: UK111UK
+main: uk.uk111.OpList.OpList
+api-version: 1.15
+commands:
+  oplist:
+    description: Displays currently OP'd players.
+    usage: /<command>
