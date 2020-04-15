@@ -1,4 +1,4 @@
-package uk.uk111.OpList.Listeners;
+package uk.uk111.minecraft.oplist.listeners;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
@@ -7,7 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.server.ServerCommandEvent;
-import uk.uk111.OpList.OpList;
+import uk.uk111.minecraft.oplist.OpList;
 
 public class OpListener implements Listener {
     @EventHandler

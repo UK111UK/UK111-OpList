@@ -1,12 +1,12 @@
-package uk.uk111.OpList.Commands;
+package uk.uk111.minecraft.oplist.commands;
 
-import uk.uk111.OpList.Utils.OpListJson;
+import uk.uk111.minecraft.oplist.OpList;
+import uk.uk111.minecraft.oplist.utils.OpListJson;
 import com.google.gson.Gson;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import uk.uk111.OpList.OpList;
 
 import java.io.IOException;
 import java.nio.file.Files;

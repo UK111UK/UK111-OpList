@@ -1,7 +1,7 @@
-package uk.uk111.OpList;
+package uk.uk111.minecraft.oplist;
 
-import uk.uk111.OpList.Commands.CommandOpList;
-import uk.uk111.OpList.Listeners.OpListener;
+import uk.uk111.minecraft.oplist.commands.CommandOpList;
+import uk.uk111.minecraft.oplist.listeners.OpListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class OpList extends JavaPlugin {

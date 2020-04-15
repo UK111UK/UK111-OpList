@@ -1,4 +1,4 @@
-package uk.uk111.OpList.Utils;
+package uk.uk111.minecraft.oplist.utils;
 
 public class OpListJson {
     private String uuid;
